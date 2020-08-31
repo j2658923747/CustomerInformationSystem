@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>统计</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+	<link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+	<link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+
+	<style>
+		body {
+			overflow: auto;
+		}
+
+		.card_list {
+			width: 98%;
+			overflow: hidden;
+			border: 1px solid lightgrey;
+			border-radius: 3px;
+			margin: 0px auto;
+		}
+
+		.card_list ul {
+			overflow: hidden;
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			text-align: center;
+			padding: 0;
+			margin-top: 25px;
+			justify-content: center;
+		}
+
+		.card_list ul li {
+			display: flex;
+			align-content:flex-start;
+			align-self: flex-start;
+			margin: 15px;
+			list-style: none;
+		}
+
+		.card_list ul li:last-of-type{
+			visibility: hidden;
+			width: 300px;
+		}
+
+		.card_box {
+			width: 300px;
+			padding: 15px 10px;
+			horiz-align: center;
+			overflow: hidden;
+			position: relative;
+			color: white;
+			border-radius: 10px;
+			background-color: rgb(0,102,204);
+		}
+
+		.card_list ul li:nth-of-type(2) .card_box{
+			background-color: rgb(255,153,0);
+		}
+		.card_list ul li:nth-of-type(3) .card_box{
+			background-color: rgb(51,153,0);
+		}
+		.card_list ul li:nth-of-type(4) .card_box{
+			background-color: rgb(255,51,0);
+		}
+		.card_list ul li:nth-of-type(5) .card_box{
+			background-color: rgb(153,154,0);
+		}
+		.card_list ul li:nth-of-type(6) .card_box{
+			background-color: rgb(154,0,255);
+		}
+		.card_list ul li:nth-of-type(7) .card_box{
+			background-color: rgb(25,200,169);
+		}
+		.card_list ul li:nth-of-type(8) .card_box{
+			background-color: rgb(59,173,229);
+		}
+		.card_list ul li:nth-of-type(9) .card_box{
+			background-color: rgb(219,112,147);
+		}
+		.card_list ul li:nth-of-type(10) .card_box{
+			background-color: rgb(119,136,153);
+		}
+		.card_list ul li:nth-of-type(11) .card_box{
+			background-color: rgb(64,224,208);
+		}
+		.card_list ul li:nth-of-type(12) .card_box{
+			background-color: rgb(150,230,140);
+		}
+
+		.card_box img {
+			cursor: pointer;
+			transition: all 0.6s;
+			background-size: cover;
+			background-repeat: no-repeat;
+			width: 80px;
+			float: left;
+		}
+		.card_box a {
+			cursor: pointer;
+			transition: all 0.6s;
+			background-size: cover;
+			background-repeat: no-repeat;
+			float: left;
+		}
+		.card_box img:hover ,.card_box a:hover {
+			transform: scale(1.3);
+		}
+
+		.limit-title1 {
+			font-size: 24px;
+			text-align: center;
+			color: #333;
+			top: 20px;
+			display: block;
+			position: relative;
+		}
+
+		p.limit-title1:before, p.limit-title1:after {
+			width: 10%;
+			height: 0.6px;
+			background: #0d8DDB;;
+			position: absolute;
+			content: "";
+			top: 50%;
+		}
+
+		p.limit-title1:before {
+			left: 33%;
+		}
+
+		p.limit-title1:after {
+			right: 33%;
+		}
+
+		p.limit-title1 strong{
+			color: #0d8ddb;
+		}
+		p > strong:before, p > strong:after {
+			width: 8px;
+			height: 8px;
+			text-align: center;
+			background-color: #0d8DDB;
+			border-radius: 50%;
+			content: "";
+			position: absolute;
+			top: 37%;
+		}
+
+		p > strong:before {
+			left: calc(33% + 10%);
+		}
+
+		p > strong:after {
+			right: calc(33% + 10%);
+		}
+		.card_right{
+			float: right;
+			width: 190px;
+			text-align: left;
+		}
+		.card_title{
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0;
+		}
+		.card_desc{
+			font-size: 14px;
+			margin: 15px 0;
+		}
+		.card_right a{
+			color: white;
+			padding: 3px 15px;
+			border: 1px solid white;
+		}
+
+		.div_disable{
+			opacity:0.3;
+		}
+		@media screen and (min-width: 1366px) {
+			.card_list ul li:last-of-type,
+			.card_box{
+				width: 400px;
+			}
+			.card_box img{
+				width: 120px;
+			}
+			.card_right{
+				width: 100%;
+				/*width: 260px;*/
+				padding-left: 15px;
+				box-sizing: border-box;
+			}
+			.card_title{
+				font-size: 22px;
+				margin: 32px 0;
+			}
+			.card_desc{
+				font-size: 18px;
+				margin: 20px 0;
+			}
+			.card_list ul{
+				margin: 40px 0;
+			}
+		}
+
+		#modal-body-id img{
+			width: 100% !important;
+			height: 100% !important;
+		}
+	</style>
+
+</head>
+
+<body class="white-bg">
+
+<!--图表-->
+
+<!--<div class="ibox-title">-->
+	<!--<h5>订单</h5>-->
+	<!--<div class="pull-right">-->
+		<!--<div class="btn-group">-->
+			<!--<button type="button" class="btn btn-xs btn-white active">天</button>-->
+			<!--<button type="button" class="btn btn-xs btn-white">月</button>-->
+			<!--<button type="button" class="btn btn-xs btn-white">年</button>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+<!--<div class="ibox-content">-->
+	<!--<div class="row">-->
+		<!--<div class="col-sm-11">-->
+			<!--<div class="flot-chart">-->
+				<!--<div class="flot-chart-content" id="flot-dashboard-chart"></div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="col-sm-1">-->
+			<!--<ul class="stat-list">-->
+				<!--<li>-->
+					<!--<h2 class="no-margins ">2,346</h2>-->
+					<!--<small>今日流量</small>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<h2 class="no-margins ">4,422</h2>-->
+					<!--<small>本周流量</small>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<h2 class="no-margins ">9,180</h2>-->
+					<!--<small>本月流量</small>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<h2 class="no-margins ">9,180</h2>-->
+					<!--<small>总计流量</small>-->
+				<!--</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+
+<!--end-->
+
+<div class="card_list">
+
+	<p class="limit-title1"><strong>产品进入端口</strong></p>
+	<ul style="margin-bottom:0;">
+		<li>
+			<div class="pull-left">
+				<div class="card_box" onclick="checkAccount(1,'https://agent.zhaosw.com/product/list')">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a2.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">百度爱采购(年制会员)</h1>
+						<!--<h2 class="card_desc text-center ">全国推广，关键词24小时在线</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left">
+				<div class="card_box" onclick="checkAccount(2,'http://caigou.hi123.shop/')">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a1.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">百度爱采购(竞价)</h1>
+						<!--<h2 class="card_desc text-center">百度首页展现，</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li>
+			<div class="pull-left">
+				<div class="card_box" onclick="checkAccount(3,'http://hwx.juboinfo.com/')">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a3.png" />-->
+					<div class="card_right ">
+						<h1 class="card_title text-center">万词推广系统</h1>
+						<!--<h2 class="card_desc text-center">百度首页·按天计费·全网覆盖</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccountDownload(4,'http://publish.zhitusoft.com/setup185.exe')">
+				<div class="card_box">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a4.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">云发布软件</h1>
+						<!--<h2 class="card_desc text-center">可投放全国大搜和爱采购客户</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount(5,'http://www2.baidu.com')">
+				<div class="card_box">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a5.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">百度竞价</h1>
+						<!--<h2 class="card_desc text-center">客户信息跟踪，挖掘潜在商机</h2>-->
+						<!--<a>在线充值</a>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount1(6)">
+				<div class="card_box">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a6.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">易上云发布系统</h1>
+						<!--<h2 class="card_desc text-center">实时消息推送，在线咨询交流</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount(7,'http://login.qipaipai.net/manage/index/login')">
+				<div class="card_box">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a7.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">官网推</h1>
+						<!--<h2 class="card_desc text-center">B2B供求信息、行业新闻发布</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount(8,'http://www.sdxhsj666.com/')">
+				<div class="card_box">
+					<!--<img src="http://center.hi123.shop:8087/sst-center/img/product_icon/a8.png" />-->
+					<div class="card_right">
+						<h1 class="card_title text-center">网站</h1>
+						<!--<h2 class="card_desc text-center">内测中，敬请期待......</h2>-->
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount(9,'http://www.juboinfo.com/list.asp?classid=29')">
+				<div class="card_box">
+					<div class="card_right">
+						<h1 class="card_title text-center">托管服务</h1>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount1(10)">
+				<div class="card_box">
+					<div class="card_right">
+						<h1 class="card_title text-center">百度实地商家</h1>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount1(11)">
+				<div class="card_box">
+					<div class="card_right">
+						<h1 class="card_title text-center">抖音认证</h1>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="pull-left" onclick="checkAccount1(12)">
+				<div class="card_box">
+					<div class="card_right">
+						<h1 class="card_title text-center">集客宝-内测中</h1>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li></li>
+	</ul>
+	<div th:id="sid" class="hidden">
+	<span shiro:principal property='sid'></span>
+	</div>
+
+
+
+	<div class="list col-lg-6">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+
+
+
+</div>
+
+
+</div>
+</div>
+
+
+
+
+
+<button type="button" class="btn btn-primary hidden" id="notice" data-toggle="modal" data-target="#myModal5">公告</button>
+
+<div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title" id="modal-title-id"></h4>
+				<!--<small class="font-bold">这里可以显示副标题。-->
+				<!--</small>-->
+			</div>
+			<small class="font-bold">
+			<div class="modal-body" id="modal-body-id">
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+			</div>
+		</small>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<!--<script th:src="@{/ruoyi/js/ry-ui.js}"></script>-->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/ajax/libs/flot/jquery.flot.js}"></script>
+<!--<th:block th:include="include :: tencent" />-->
+<!--<th:block th:include="include :: sparkline-js" />-->
+<th:block th:include="include :: footer" />
+<script type="text/javascript">
+    function checkAccount(id,url){
+        parent.layer.open({
+            type: 2,
+            title: "product",
+            maxmin: true,
+            resize: true,
+            skin: 'myskin',
+            success: function (layero) {
+                layero.find('.layui-layer-min').remove();
+            },
+            area: ['100%', '100%'],
+            content: url
+        });
+    }
+    function checkAccount1(id){
+        $.modal.msg("<p style='color:red;'>内测中</p>");
+    }
+    function checkAccountDownload(id,url){
+        window.location.href = url;
+	}
+
+	function addNotice(row){
+        console.log(row);
+	}
+
+    $(document).ready(function () {
+
+        $.ajax({
+			url:"/system/notice/list",
+			type:"post",
+			success:function (data) {
+				var rows = data.rows;
+				for (var i = 0;i<rows.length;i++){
+                    // console.log(rows[i]);
+                    var noticeTitle = rows[i].noticeTitle;
+                    var noticeContent = rows[i].noticeContent;
+                    $("#modal-title-id").html(noticeTitle);
+                    $("#modal-body-id").html(noticeContent);
+                    if (rows[i].noticeId==2){
+                        addNotice(rows[i]);
+					}
+				    // break;
+				}
+				$("#notice").click();
+				// $("#money").text(data);
+            }
+		});
+
+
+       /* $.ajax({
+			url:"/system/user/getNowMoney",
+			type:"post",
+			success:function (data) {
+				console.log(data);
+				$("#money").text(data);
+            }
+		});*/
+
+
+
+        var data2 = [
+            [gd(2012, 1, 1), 7], [gd(2012, 1, 2), 6], [gd(2012, 1, 3), 4], [gd(2012, 1, 4), 8],
+            [gd(2012, 1, 5), 9], [gd(2012, 1, 6), 7], [gd(2012, 1, 7), 5], [gd(2012, 1, 8), 4],
+            [gd(2012, 1, 9), 7], [gd(2012, 1, 10), 8], [gd(2012, 1, 11), 9], [gd(2012, 1, 12), 6],
+            [gd(2012, 1, 13), 4], [gd(2012, 1, 14), 5], [gd(2012, 1, 15), 11], [gd(2012, 1, 16), 8],
+            [gd(2012, 1, 17), 8], [gd(2012, 1, 18), 11], [gd(2012, 1, 19), 11], [gd(2012, 1, 20), 6],
+            [gd(2012, 1, 21), 6], [gd(2012, 1, 22), 8], [gd(2012, 1, 23), 11], [gd(2012, 1, 24), 13],
+            [gd(2012, 1, 25), 7], [gd(2012, 1, 26), 9], [gd(2012, 1, 27), 9], [gd(2012, 1, 28), 8],
+            [gd(2012, 1, 29), 5], [gd(2012, 1, 30), 8], [gd(2012, 1, 31), 25]
+        ];
+
+        var data3 = [
+            [gd(2012, 1, 1), 800], [gd(2012, 1, 2), 500], [gd(2012, 1, 3), 600], [gd(2012, 1, 4), 700],
+            [gd(2012, 1, 5), 500], [gd(2012, 1, 6), 456], [gd(2012, 1, 7), 800], [gd(2012, 1, 8), 589],
+            [gd(2012, 1, 9), 467], [gd(2012, 1, 10), 876], [gd(2012, 1, 11), 689], [gd(2012, 1, 12), 700],
+            [gd(2012, 1, 13), 500], [gd(2012, 1, 14), 600], [gd(2012, 1, 15), 700], [gd(2012, 1, 16), 786],
+            [gd(2012, 1, 17), 345], [gd(2012, 1, 18), 888], [gd(2012, 1, 19), 888], [gd(2012, 1, 20), 888],
+            [gd(2012, 1, 21), 987], [gd(2012, 1, 22), 444], [gd(2012, 1, 23), 999], [gd(2012, 1, 24), 567],
+            [gd(2012, 1, 25), 786], [gd(2012, 1, 26), 666], [gd(2012, 1, 27), 888], [gd(2012, 1, 28), 900],
+            [gd(2012, 1, 29), 178], [gd(2012, 1, 30), 555], [gd(2012, 1, 31), 993]
+        ];
+
+
+        var dataset = [
+            // {
+            //     label: "访问量",
+            //     data: data3,
+            //     color: "#1ab394",
+            //     bars: {
+            //         show: true,
+            //         align: "center",
+            //         barWidth: 24 * 60 * 60 * 600,
+            //         lineWidth: 0
+            //     }
+			//
+            // },
+				{
+                label: "点击量",
+                data: data2,
+                yaxis: 2,
+                color: "#464f88",
+                lines: {
+                    lineWidth: 1,
+                    show: true,
+                    fill: true,
+                    fillColor: {
+                        colors: [{
+                            opacity: 0.2
+                        }, {
+                            opacity: 0.2
+                        }]
+                    }
+                },
+                splines: {
+                    show: false,
+                    tension: 0.6,
+                    lineWidth: 1,
+                    fill: 0.1
+                },
+            }
+        ];
+
+
+        var options = {
+            xaxis: {
+                mode: "time",
+                tickSize: [3, "day"],
+                tickLength: 0,
+                axisLabel: "Date",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial',
+                axisLabelPadding: 10,
+                color: "#838383"
+            },
+            yaxes: [{
+                position: "left",
+                max: 1070,
+                color: "#838383",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial',
+                axisLabelPadding: 3
+            }, {
+                position: "right",
+                clolor: "#838383",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: ' Arial',
+                axisLabelPadding: 67
+            }
+            ],
+            legend: {
+                noColumns: 1,
+                labelBoxBorderColor: "#000000",
+                position: "nw"
+            },
+            grid: {
+                hoverable: false,
+                borderWidth: 0,
+                color: '#838383'
+            }
+        };
+
+        function gd(year, month, day) {
+            return new Date(year, month - 1, day).getTime();
+        }
+
+        var previousPoint = null,
+            previousLabel = null;
+
+        $.plot($("#flot-dashboard-chart"), dataset, options);
+    });
+</script>
+<script>
+    function getPVData() {
+        var options = {
+            xaxis: {
+                mode: "time",
+                tickSize: [3, "day"],
+                tickLength: 0,
+                axisLabel: "Date",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial',
+                axisLabelPadding: 10,
+                color: "#838383"
+            },
+            yaxes: [{
+                position: "left",
+                max: 1070,
+                color: "#838383",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial',
+                axisLabelPadding: 3
+            }, {
+                position: "right",
+                clolor: "#838383",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: ' Arial',
+                axisLabelPadding: 67
+            }
+            ],
+            legend: {
+                noColumns: 1,
+                labelBoxBorderColor: "#000000",
+                position: "nw"
+            },
+            grid: {
+                hoverable: false,
+                borderWidth: 0,
+                color: '#838383'
+            }
+        };
+
+
+    //    获取访问数据
+		$.ajax({
+            url:"/pv/search",
+			type:"get",
+			success:function (data) {
+				console.log(data);
+            }
+		})
+
+    }
+</script>
+<script>
+    var _mtac = {};
+    (function() {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        var sid = $("#sid span").text();
+        if (sid=="null"){
+            console.log("sid not exist!");
+            return;
+        }
+        console.log(sid);
+        mta.setAttribute("sid", sid);
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+        getPVData();
+    })();
+</script>
+
+
+<!--<script> MtaH5.pgv(); </script>-->
+
+
+</body>
+</html>

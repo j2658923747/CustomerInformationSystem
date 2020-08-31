@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ZdInvestMapper">
+
+    <resultMap type="ZdInvest" id="ZdInvestResult">
+        <result property="id"    column="id"    />
+        <result property="outTradeNo"    column="out_trade_no"    />
+        <result property="totalAmount"    column="total_amount"    />
+        <result property="alipayNo"    column="alipay_no"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="succeTime"    column="succe_time"    />
+        <result property="type"    column="type"    />
+        <result property="userId"    column="user_id"    />
+        <result property="productType"    column="product_type"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectZdInvestVo">
+        select id, out_trade_no, total_amount, alipay_no, create_time, succe_time, type, user_id, product_type, remark from zd_invest
+    </sql>
+
+    <select id="selectZdInvestList" parameterType="ZdInvest" resultMap="ZdInvestResult">
+        <include refid="selectZdInvestVo"/>
+        <where>
+            <if test="outTradeNo != null  and outTradeNo != ''"> and out_trade_no = #{outTradeNo}</if>
+            <if test="totalAmount != null "> and total_amount = #{totalAmount}</if>
+            <if test="alipayNo != null  and alipayNo != ''"> and alipay_no = #{alipayNo}</if>
+            <if test="succeTime != null "> and succe_time = #{succeTime}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="productType != null"> and product_type = #{productType}</if>
+            <if test="remark != null"> and remark = #{remark}</if>
+        </where>
+    </select>
+
+    <select id="selectZdInvestById" parameterType="Long" resultMap="ZdInvestResult">
+        <include refid="selectZdInvestVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertZdInvest" parameterType="ZdInvest" useGeneratedKeys="true" keyProperty="id">
+        insert into zd_invest
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="outTradeNo != null and outTradeNo != ''">out_trade_no,</if>
+            <if test="totalAmount != null">total_amount,</if>
+            <if test="alipayNo != null">alipay_no,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="succeTime != null">succe_time,</if>
+            <if test="type != null and type != ''">type,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="productType != null">product_type,</if>
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="outTradeNo != null and outTradeNo != ''">#{outTradeNo},</if>
+            <if test="totalAmount != null">#{totalAmount},</if>
+            <if test="alipayNo != null">#{alipayNo},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="succeTime != null">#{succeTime},</if>
+            <if test="type != null and type != ''">#{type},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="productType != null">#{productType},</if>
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updateZdInvest" parameterType="ZdInvest">
+        update zd_invest
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="outTradeNo != null and outTradeNo != ''">out_trade_no = #{outTradeNo},</if>
+            <if test="totalAmount != null">total_amount = #{totalAmount},</if>
+            <if test="alipayNo != null">alipay_no = #{alipayNo},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="succeTime != null">succe_time = #{succeTime},</if>
+            <if test="type != null and type != ''">type = #{type},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="productType != null">product_type = #{productType},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteZdInvestById" parameterType="Long">
+        delete from zd_invest where id = #{id}
+    </delete>
+
+    <delete id="deleteZdInvestByIds" parameterType="String">
+        delete from zd_invest where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

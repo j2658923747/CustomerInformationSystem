@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TjCityMapper">
+    
+    <resultMap type="TjCity" id="TjCityResult">
+        <result property="id"    column="id"    />
+        <result property="city"    column="city"    />
+        <result property="pv"    column="pv"    />
+        <result property="uv"    column="uv"    />
+        <result property="vv"    column="vv"    />
+        <result property="iv"    column="iv"    />
+        <result property="userId"    column="user_id"    />
+    </resultMap>
+
+    <sql id="selectTjCityVo">
+        select id, city, pv, uv, vv, iv, user_id from tj_city
+    </sql>
+
+    <select id="selectTjCityList" parameterType="TjCity" resultMap="TjCityResult">
+        <include refid="selectTjCityVo"/>
+        <where>  
+            <if test="city != null  and city != ''"> and city = #{city}</if>
+            <if test="pv != null "> and pv = #{pv}</if>
+            <if test="uv != null "> and uv = #{uv}</if>
+            <if test="vv != null "> and vv = #{vv}</if>
+            <if test="iv != null "> and iv = #{iv}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+        </where>
+    </select>
+    
+    <select id="selectTjCityById" parameterType="Long" resultMap="TjCityResult">
+        <include refid="selectTjCityVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTjCity" parameterType="TjCity" useGeneratedKeys="true" keyProperty="id">
+        insert into tj_city
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="city != null">city,</if>
+            <if test="pv != null">pv,</if>
+            <if test="uv != null">uv,</if>
+            <if test="vv != null">vv,</if>
+            <if test="iv != null">iv,</if>
+            <if test="userId != null">user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="city != null">#{city},</if>
+            <if test="pv != null">#{pv},</if>
+            <if test="uv != null">#{uv},</if>
+            <if test="vv != null">#{vv},</if>
+            <if test="iv != null">#{iv},</if>
+            <if test="userId != null">#{userId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTjCity" parameterType="TjCity">
+        update tj_city
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="city != null">city = #{city},</if>
+            <if test="pv != null">pv = #{pv},</if>
+            <if test="uv != null">uv = #{uv},</if>
+            <if test="vv != null">vv = #{vv},</if>
+            <if test="iv != null">iv = #{iv},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTjCityById" parameterType="Long">
+        delete from tj_city where id = #{id}
+    </delete>
+
+    <delete id="deleteTjCityByIds" parameterType="String">
+        delete from tj_city where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

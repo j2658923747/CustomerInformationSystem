@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('【请填写功能名称】列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <label>订单号：</label>
+                                <input type="text" name="outTradeNo"/>
+                            </li>
+                            <li>
+                                <label>充值金额：</label>
+                                <input type="text" name="totalAmount"/>
+                            </li>
+                            <li>
+                                <label>支付宝交易号：</label>
+                                <input type="text" name="alipayNo"/>
+                            </li>
+                            <li class="select-time">
+                                <label>完成订单时间：</label>
+                                <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginSucceTime]"/>
+                                <span>-</span>
+                                <input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endSucceTime]"/>
+                            </li>
+                            <li>
+                                <label>支付状态：</label>
+                                <select name="type">
+                                    <option value="">所有</option>
+                                    <option value="未支付">未支付</option>
+                                    <option value="已支付">已支付</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>用户id：</label>
+                                <input type="text" name="userId"/>
+                            </li>
+                            <li>
+                                <label>充值产品：</label>
+                                <select class="form-control" name="productType" id="productType" required>
+                                    <option value="">所有</option>
+                                    <option value="AI分站">AI分站</option>
+                                    <option value="万词霸屏">万词霸屏</option>
+                                    <option value="闪速排">闪速排</option>
+                                    <option value="采购宝">采购宝</option>
+                                </select>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="system:invest:add">
+                    <i class="fa fa-plus"></i> 添加
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="system:invest:edit">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:invest:remove">
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:invest:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('system:invest:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('system:invest:remove')}]];
+        var prefix = ctx + "system/invest";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "【请填写功能名称】",
+                columns: [{
+                    checkbox: true,
+                    visible:true
+                },
+                {
+                    field: 'id',
+                    title: '订单序号',
+                    visible: false
+                },
+                {
+                    field: 'outTradeNo',
+                    title: '订单号'
+                },
+                {
+                    field: 'totalAmount',
+                    title: '充值金额'
+                },
+                {
+                    field: 'alipayNo',
+                    title: '支付宝交易号'
+                },
+                {
+                    field: 'createTime',
+                    title: '创建订单时间'
+                },
+                {
+                    field: 'succeTime',
+                    title: '完成订单时间'
+                },
+                {
+                    field: 'type',
+                    title: '支付状态'
+                },
+                {
+                    field: 'productType',
+                    title: '充值产品'
+                },
+                {
+                    field: 'remark',
+                    title: '备注'
+                },
+                {
+                    field: 'userId',
+                    title: '用户id'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            var role = [[${@permission.hasRole('admin')}]];
+            if (role=="hidden"){
+                delete options['columns'][11];
+                delete options['columns'][10];
+                options['columns'][0].visible=false
+                //delete options['columns'][2];
+                console.log();
+            }
+            console.log(role);
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

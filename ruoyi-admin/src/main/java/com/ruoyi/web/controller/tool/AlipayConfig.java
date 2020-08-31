@@ -1,0 +1,23 @@
+package com.ruoyi.web.controller.tool;
+
+public class AlipayConfig {
+//    应用id
+    public static String appId="2016102300743498";
+//    商户私钥
+    public static String privateKey="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDD7YrqknS/GUj5toJDhFkw03FpUq+vk1y4rEATOUs73FU5EkR1DjwjObPjf0akQTQKAEC+TfLnI6gD9y36VSxEF/tA8GozBaW+4gpzHlDJSMlVH5OmBDrpmFNlXzUK4XOib2OKMJSDTNdYYTj+Qzae5mM9L9pkPtdETzp7xrQX5WL6Mi7oaDezrjwyWVp7wb4VKzEswOMOnlFM0UOBkfm6MhNAgRp1zfA62RFrptV0W5gR4ivoiEUEqvxLs8SrCMdzV4SG0/4eSFavWNHY+dSpo/9z8WZYGTPtf6758DdulpdTqIPjflse5OV1PW5I7v2iest5jrzU0PyiYw/vmm6LAgMBAAECggEALOgMF/mbcpVsCXgQYUM7YhqEevxtshNXhChOw1k1ajH1ApCyShYKKJS4K2NnoIwlTkmCjVu2Wc3tW4NS8XaGH9FTUC4KWUlpFNggRwRixc+9/ZmwMLP1gMbeDnUE5kqIQ2m+adT6pSF+lg4qjvR+12q8wjBuoN1aX5i9MdN4QaV1+QqIGZQ26mimqBMKi0HZ6pyzIdfAPQRgmXQ0fBqmpXefOqzL8/j8e7qIqpk7zJKyqwIZKexT3d7QRnVJwdFI++vbewst+qZ0VQxCUkx0lKmEbrzph7zWwqqjxOV6y3IcB0AoJmr11wWuXiimGsZTWyZn1MjTyEHlAtSIVTBBQQKBgQDsr5UEPpmT+TQYZFm3E7pIropeGFtMWqT2a9YCXiJD13rVt0GUig+6/XVWAd7MF4IWCZ5kReSICfNP9D4JAYnanxlTLBLjRQKogZpwKfca2mlKbCX0o5JfQfFhXUiUPRX/0KYHWkuvqoWkwO9c8rPIZvEiK2GvaDrCRTwQENH1qwKBgQDT6oSbBk9oFcQJTsvVrXRtZmEOASP0mIZOOAoZiu9diJ94iIPNjkOlN0Va5cT/BWCi4PfRLc2DgfUk5dfLL7CtK7E5kiHW5uYn33Bez5mtDzkwUFKw+Vs1r6xksh/hNqJCpkSjyvJ7baGcXP6O/Hn9zR8XzsUQiqOIqcjaLSLKoQKBgC9/jQgtB+UKPconWVnEO74aSOpZOPk5t6E8QtZ2zamPtLbu79o/WqjL9KAt/+g1T4XcqEy3OgWS+aEyAsEL7f5Rr2NhlOjHEKGAYN3hjhV1f2vQCE3wBY/YS/ieH9Kf76pG1QrktAuszOUjUuX0TuAIyJty2Ue6QxB5lHQk6/3BAoGBAMOfT74TuyWoQgkdlgiwUDPVOG7HGrvmOMTn8lrV6FT9k8ierJ0KYOOY/AsG5C1Od4CkD+AnWfm18+iVy/ijE4MoPDea8GYDTB8uofrDxWb+EJrK6yq3ZT1P5+IklE1AM9U2y1IwPFs4PuGq7sprwulJexRtKXk1ofS8Vs8gr2dBAoGAb7Pog8aiNcHEfcd+d037Lx5grP8ZqWneXz5IApdCAxLgYfLweobP97mY23whfoDKSk5LUaU+tV3JbyUgx9oCpskhJ93SEJKd3Qs+drKigBlWE/M8yDWzLaMztM3jRkIbnkyI+zdRhJLV4FiniHVALfqlrPvcLr4CP0hLAAWSovg=";
+//    支付宝公钥
+    public static String publicKey="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAisjEXVZGJgNPFKAw71KGyl/UOXO2QoKwVnsryTQ/pWnmtnWza2OZUZ94i6lNGzOgLq5VErzOSMsw4GuNt0Y/R/dSXrb+u16oexDFXSXv9Kf0ngEcACzccOMZRZxEUVjJpfbObl4AySlLanexvIHq03os2DK2HUwP0maV7WWYMBJX1v5/2PUM2hMuTqmS98mFaYzNoVEEIgrFASb0JevtcfYEhwf2UqwuzgxVe+vC0SnJntEJPuQmGYo5RvNgL4cUo8Th0PLyarSGMqVze4Ev4OiZ09sbApWaxE547d3ouK1Z9tyHskx3XHZEoWJ5jv2hZOCphQS/ArCRXhmkIwyK2QIDAQAB";
+//    异步通知命令
+    //public static String notifyUrl="http://127.0.0.1/pay/alipayNotifyNotice";
+    public static String notifyUrl="http://swdz4z.natappfree.cc/pay/alipayNotifyNotice";
+//    页面跳转同步通知
+    public static String returnUrl="http://swdz4z.natappfree.cc/pay/alipayReturnNotice";
+//    签名方式
+    public static String signType="RSA2";
+//    字符串编码
+    public static String charset="utf-8";
+//    支付宝网关
+    public static String gatewayUrl="https://openapi.alipaydev.com/gateway.do";
+
+
+}

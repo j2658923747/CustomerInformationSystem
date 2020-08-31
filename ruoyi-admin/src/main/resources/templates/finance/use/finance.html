@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+     <th:block th:include="include :: header('充值余额')" />
+      <th:block th:include="include :: select2-css" />
+    <style>
+        .fl-p p{
+            width: 60%;
+            float: left;
+        }
+        .ibox .ibox-content{
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<hr>
+<div class="form-container">
+    <form id="form" action="/pay/alipay" method="post" target="_blank">
+        <h4 class="form-header h4">基本信息</h4>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户名称：</label>
+                    <div class="col-sm-8">
+                        <label class="control-label" shiro:principal property="userName">山东巨博</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户登录名：</label>
+                    <div class="col-sm-8">
+                        <label class="control-label" shiro:principal property="userName">山东巨博</label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h4 class="form-header h4">充值</h4>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">当前余额：</label>
+                    <div class="col-xs-8">
+                        <label class="control-label" id="balance">0.00元</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">充值的产品：</label>
+                    <div class="col-xs-8">
+                        <select class="form-control" name="productType" id="productType" required>
+                            <option value="集客">集客</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ibox float-e-margins" style="width:30%;margin-left: 10%;">
+
+            <div class="ibox-content" style="height: 330px;padding-top: 40px;">
+                <p id="pay-qrcode">
+                    <a href="javascript:;"><img src="/img/wx.jpg" width="50%" alt="请使用手机支付宝或者微信扫码支付"></a>
+                    <a href="javascript:;"><img src="/img/alipay.png" width="50%" alt="请使用手机支付宝或者微信扫码支付" style="float: left;">
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="ibox float-e-margins" style="width:30%;margin-left: 10%;height: 38%;position: absolute;left: 50%;top: 35%;padding-top: 2%;">
+
+            <img alt="" src="https://agent.zhaosw.com/resources/admin/images/nyyh.png" style="float: left;margin-right: 100px;margin-left: 40px;">
+            <!--</p >-->
+            <p style="margin-top:1px;">
+                <span style="font-family: 微软雅黑, ">户 &nbsp;名：中国农业银行聊城市分行营业部</span>
+            </p >
+            <p>
+                <span style="font-family: 微软雅黑, ">帐 &nbsp;号：15 855 0010 4001 0179</span>
+            </p >
+            <p>
+                <span style="font-family: 微软雅黑, ">开户银行：山东巨博信息科技有限公司</span>
+            </p >
+
+            <img src="/img/bank.jpg" style="width:36%;margin-left: 30%">
+        </div>
+
+
+        <!--<div class="ibox float-e-margins fl-p" style="width:30%;margin-left: 10%;    height: 12%;position: absolute;left: 50%;bottom: 30%;">-->
+            <!--&lt;!&ndash;<p>&ndash;&gt;-->
+                <!--<img alt="" src="https://agent.zhaosw.com/resources/admin/images/nyyh.png" style="float: left;margin-right: 100px;margin-left: 40px;">-->
+            <!--&lt;!&ndash;</p >&ndash;&gt;-->
+            <!--<p style="margin-top:1px;">-->
+                <!--<span style="font-family: 微软雅黑, ">户 &nbsp;名：中国农业银行聊城市分行营业部</span>-->
+            <!--</p >-->
+            <!--<p>-->
+                <!--<span style="font-family: 微软雅黑, ">帐 &nbsp;号：15 855 0010 4001 0179</span>-->
+            <!--</p >-->
+            <!--<p>-->
+                <!--<span style="font-family: 微软雅黑, ">开户银行：山东巨博信息科技有限公司</span>-->
+            <!--</p >-->
+            <!--&lt;!&ndash;<div class="ibox-content">&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>公户：    </p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+
+
+        <!--<div class="row">-->
+            <!--<div class="col-sm-6">-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-xs-4 control-label">充值金额：</label>-->
+                    <!--<div class="col-sm-5">-->
+                        <!--<input type="text" name="totalAmount" class="form-control" id="total" placeholder="请输入金额">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <h4 class="form-header h4">其他信息</h4>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">备注：</label>
+                    <div class="col-xs-10">
+                        <textarea name="remark" maxlength="100" class="form-control" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--<div class="col-sm-12 col-sm-offset-4">-->
+            <!--<input type="button" value="支付宝支付" class="btn btn-primary" onclick="submitForm('/pay/alipay')"></input>-->
+            <!--<input type="button" value=" 微信支付  " class="btn btn-primary"  onclick="submitForm('/pay/wexpay')"></input>-->
+        <!--</div>-->
+        <!--   <input type="button" value="支付宝支付" onclick="submitForm('/pay/alipay')">-->
+        <!--   <input type="button" value=" 微信支付  " onclick="submitForm('/pay/wexpay')">-->
+    </form>
+</div>
+<th:block th:include="include :: footer" />
+<th:block th:include="include :: layout-latest-js" />
+<th:block th:include="include :: ztree-js" />
+</body>
+
+<script language="javascript">
+
+    $('#pay-qrcode').click(function(){
+        var html=$(this).html();
+        parent.layer.open({
+            title: false,
+            type: 1,
+            closeBtn:false,
+            shadeClose:true,
+            area: ['600px', 'auto'],
+            content: html
+        });
+    });
+
+    $.ajax({
+        url:"/system/user/getNowMoney",
+        type:"post",
+        success:function (data) {
+            console.log(data);
+            $("#balance").text(data+"元");
+        }
+    });
+
+    function submitForm(action) {
+        if (document.getElementById("total").value==""){
+            $.modal.msgWarning("请填写金额!");
+            return;
+        }
+        document.getElementById("form").action = action
+        document.getElementById("form").submit()
+    }
+</script>
+
+<style>
+    .form-container {
+        padding:10px;
+        /*width: 100px;*/
+    }
+    label{
+        line-height: 50px;
+        text-align: right;
+    }
+    input {
+        float: left;
+        margin: 8px;
+        width: 90px;
+    }
+</style>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>购买产品</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <!-- bootstrap-table 表格插件样式 -->
+    <link href="/ajax/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=20200318" rel="stylesheet">
+    <link href="/ruoyi/css/ry-ui.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://www.juboinfo.com/theme/2016/static/css/style.css" type="text/css">
+</head>
+<body>
+<div class="col-md-12" style="top:10%">
+    <div class="form-group">
+        <label class="col-sm-1 control-label" style="top:10px;left:50px;">产品价格：</label>
+        <div class="col-sm-1">
+            <input type="text" name="totalMoney" value="3200" class="form-control" readonly>
+            <input type="hidden" id="product_id" value="2">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12 col-sm-offset-1 m-t">
+            <button type="submit" class="btn btn-primary" onclick="buy()" style="margin-bottom: 40px;">购买</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="outter yewu jianjie" id="jianjie">
+    <div class="title">
+        <h1 style="padding-bottom:5px;"><font>产品优势</font></h1>
+        <h1>Product advantages
+        </h1>
+    </div>
+
+    <div class="cul_list">
+        <ul>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com/theme/2016/static/picture/c_22.png"></div>
+                <h3 style="text-align: center;">低门槛准入</h3>
+                <p style="text-align: center;">不收会员费，不收认证费
+                    <br>可视化后台，智能投放，方便管理
+                </p>
+            </li>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com/theme/2016/static/picture/c_23.png"></div>
+                <h3 style="text-align: center;">多形式展现</h3>
+                <p style="text-align: center;">网站、会员多形式展现
+                    <br>
+                    免费展现，访问付费
+                </p>
+            </li>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com/theme/2016/static/picture/c_24.png"></div>
+                <h3 style="text-align: center;">数据可视化</h3>
+                <p style="text-align: center;">后台数据，实时监控<br>账单清晰，资费透明</p>
+            </li>
+
+
+
+            <div style="clear:both;"></div>
+        </ul>
+    </div>
+
+</div>
+
+<div class="outter yewu jianjie">
+    <div class="title">
+        <h1 style="padding-bottom:5px;"><font>推广优势</font></h1>
+        <h1>Promotion advantages</h1>
+    </div>
+    <div class="cul_list">
+        <ul>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com//theme/2016/static/picture/c_222.png"></div>
+                <h3 style="text-align: center;">全系列多场景用户顶级流量</h3>
+                <p style="text-align: center;">竞价推广凭借强大的用户产品优势，每天数十亿搜索请求超过1亿用户浏览信息流、800亿次定位服务要求，为客户提供全系列产品广告资源覆盖用户生活十大场景。</p>
+            </li>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com//theme/2016/static/picture/c_233.png"></div>
+                <h3 style="text-align: center;">通过技术让投放更简单 </h3>
+                <p style="text-align: center;">通过大数据会为您实时捕捉用户行为，智能推荐合理创意，自动根据内容追投广告，最大限度为您节约成本。  </p>
+            </li>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com//theme/2016/static/picture/c_244.png"></div>
+                <h3 style="text-align: center;">把您的广告展现给精准用户</h3>
+                <p style="text-align: center;">借助行业领先的搜索和咨询推荐，根据用户的意图和行为数据分析，超过200万种特征的精准用户画像，识别每一位用户真实需求及兴趣爱好。</p>
+            </li>
+
+
+
+            <div style="clear:both;"></div>
+        </ul>
+    </div>
+</div>
+
+<div class="outter yewu">
+    <div class="title">
+        <h1 style="padding-bottom:5px;"><font>竞价优势</font></h1>
+        <h1>team's mien</h1>
+    </div>
+    <div class="cul_list">
+        <ul>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com//theme/2016/static/picture/c_2222.png"></div>
+                <h3 style="text-align: center;">标准营销推广</h3>
+                <p style="text-align: center;">操作简单、效果快速，支持多个显著位置展现按点击收费，展示免费。</p>
+            </li>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com//theme/2016/static/picture/c_2333.png"></div>
+                <h3 style="text-align: center;">按实际效果付费 </h3>
+                <p style="text-align: center;">根据您的预算和营销目标，以成本最优方式最大化您的广告效果 。  </p>
+            </li>
+            <li>
+                <div class="pic"><img src="http://www.juboinfo.com//theme/2016/static/picture/c_2444.png"></div>
+                <h3 style="text-align: center;">获取精准客户</h3>
+                <p style="text-align: center;">多广告词触发，深度挖掘潜在客户，让您的客户群更精准。</p>
+            </li>
+
+
+
+            <div style="clear:both;"></div>
+        </ul>
+    </div>
+
+
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/ajax/libs/blockUI/jquery.blockUI.js"></script>
+<script src="/ajax/libs/iCheck/icheck.min.js"></script>
+<script src="/ajax/libs/layer/layer.min.js"></script>
+<script src="/ajax/libs/layui/layui.js"></script>
+<script src="/ruoyi/js/common.js?v=4.3.1"></script>
+<script src="/ruoyi/js/ry-ui.js?v=4.3.1"></script>
+<script>
+    function buy() {
+        console.log($("#product_id").val());
+        $.ajax({
+            url:"/product/buy",
+            data:{
+                productId:$("#product_id").val()
+            },
+            success:function (data) {
+                $.modal.msg(data);
+                console.log(data);
+            }
+        })
+    }
+</script>
+</body>
+</html>

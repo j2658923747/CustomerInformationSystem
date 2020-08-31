@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>购买产品</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <!-- bootstrap-table 表格插件样式 -->
+    <link href="/ajax/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=20200318" rel="stylesheet">
+    <link href="/ruoyi/css/ry-ui.css" rel="stylesheet">
+
+    <link href="http://www.juboinfo.com/theme/2016/static/css/css.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .box5_a{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-md-12" style="top:10%;margin-bottom: 100px;">
+    <div class="form-group">
+        <label class="col-sm-1 control-label" style="top:10px;left:50px;">产品价格：</label>
+        <div class="col-sm-1">
+            <input type="text" name="totalMoney" value="5000" class="form-control" readonly>
+            <input type="hidden" id="product_id" value="7">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12 col-sm-offset-1 m-t">
+            <button type="submit" class="btn btn-primary" onclick="buy()">购买</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="box3">
+    <div class="box3_tit"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_22.jpg" width="518" height="100" alt=""></div>
+    <ul id="product">
+        <li>
+            <div class="productpic"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_26.jpg" width="113" height="111" alt=""></div>
+            <div class="productname">指定网站<p>指定关键词</p></div>
+        </li>
+        <li>
+            <div class="productpic"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_28.jpg" width="115" height="111" alt=""></div>
+            <div class="productname">做到首页<br>按天收费</div>
+        </li>
+        <li>
+            <div class="productpic"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_30.jpg" width="114" height="111" alt=""></div>
+            <div class="productname">核心关键词<br>6元/天</div>
+        </li>
+        <li>
+            <div class="productpic"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_32.jpg" width="112" height="111" alt=""></div>
+            <div class="productname">后台监控<br>报表呈现</div>
+        </li>
+        <li>
+            <div class="productpic"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_34.jpg" width="114" height="111" alt=""></div>
+            <div class="productname">正规优化<br>效果稳定</div>
+        </li>
+    </ul>
+    <div class="box3_box">
+        <div class="box3_left"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_42.jpg" width="188" height="87" alt=""></div>
+        <div class="box3_rihgt">在各大搜索引擎中综合提高您网站的排名，将您的竞争对手远远地甩在后头，将您的企业置身最具竞争力的位置，体现您公司品牌与实力；<br>
+            客户普遍认为，排在搜索结果中位置越靠前的公司实力越强。</div>
+    </div>
+    <div class="box3_box">
+        <div class="box3_left"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_45.jpg" width="188" height="87" alt=""></div>
+        <div class="box3_rihgt">提高您网站的流量，给您带来潜在的目标客户；<br>
+            优化您具备价值的核心关键词，并且为您设计具有吸引力的广告语。</div>
+    </div>
+    <div class="box3_box">
+        <div class="box3_left" style="height:132px;"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_47.jpg" width="188" height="125" alt=""></div>
+        <div class="box3_rihgt">节省您的广告投入费用。<br>
+            假如您在百度投放一个核心关键词，该关键词每月的点击次数是1000次，接照百度平均点击费用2元/次计算，您一个月需要投入2000元，一年需要投入24000元。事实上您远不止一个核心关键词、您的点击次数也远不止1000次、平均点击一次的费用也远不止1元/次。而这个过程巨博网络可以为您省去90%以上的费用，并且，您是不需要为每次点击支付任何费用的，你也不需要再控制每天的推广预算，你的网站也将24小时在线。</div>
+    </div>
+</div>
+<div class="box4">
+    <div class="box4_tit"><img src="http://www.juboinfo.com/theme/2016/static/picture/seo_50.jpg" width="465" height="62" alt=""></div>
+    <div class="box4_box">
+        <div class="box4_left">
+            <div class="box4_a">
+                <div class="box4_b">智能检测系统；</div>
+                <div class="box4_c">智能检测系统关键词排名可分级管理</div>
+            </div>
+            <div class="box4_a" style="margin-top:40px;">
+                <div class="box4_b">智能计费系统；</div>
+                <div class="box4_c">根据关键词字符数热度等信息智能计算</div>
+            </div>
+            <div class="box4_a" style="margin-top:40px;">
+                <div class="box4_b">智能云链系统；</div>
+                <div class="box4_c">自主链接、交换平台提升网站外部强关系</div>
+            </div>
+            <div class="box4_a" style="margin-top:45px;">
+                <div class="box4_b">智能云词系统；</div>
+                <div class="box4_c">靶向定位触发关键词 迅速串联提升权重及流量</div>
+            </div>
+        </div>
+        <div class="box4_right">
+            <div class="box4_a">
+                <div class="box4_b">智能推送系统；</div>
+                <div class="box4_c">依据算法规则强力推送提升网站收录及评分</div>
+            </div>
+            <div class="box4_a" style="margin-top:40px;">
+                <div class="box4_b">智能内容系统；</div>
+                <div class="box4_c">不断生成高原创度内容为人工团队提供海量内容素材</div>
+            </div>
+            <div class="box4_a" style="margin-top:40px;">
+                <div class="box4_b">优化执行团队</div>
+                <div class="box4_c">根据网站实际情况执行具体站内及站外的优化操作 </div>
+            </div>
+            <div class="box4_a" style="margin-top:40px;">
+                <div class="box4_b">算法研究团队</div>
+                <div class="box4_c">大数据及算法更新数据不断研究并升级优化策略 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box5">
+    <div style="height:350px;">
+        <div class="box5_a"><span style="font-size:22px; font-weight:bold; color:#ff6d00; display: block; text-align: center;">专业:</span><br>
+            专业的行业知识：作为百度及腾讯搜狗的核心合作伙伴，我们专注于互联网基础应用和搜索引擎营销服务领域，是山东地区优质的搜索引擎营销服务商，巨博网络拥有丰富的搜索引擎营销经验及资源；专业的团队：我们拥有一支专业的SEO团队，他们具有成熟的网站优化经验，<br>
+            他们致力为用户提供高品质的优化服务，让您的搜索引<br>
+            擎营销计划变得更加成熟和完美。</div>
+
+        <div class="box5_b"> <span style="font-size:22px; font-weight:bold; color:#ff6d00; display: block; text-align: center;">信赖:</span><br>
+            巨博网络服务过大量客户，是国内知名的互联网应用、网络咨询服务和互联网软件开发商。 </div>
+    </div>
+    <div>
+        <div class="box5_a"><span style="font-size:22px; font-weight:bold; color:#ff6d00; display: block; text-align: center;">服务:</span>
+            巨博网络怀着"做最好的搜索引擎服务商"的愿<br>
+            景，秉着"为客户创造价值"的经营理念，倡导"<br>
+            使命、责任、诚信、超越、感恩"的文化精神。</div>
+        <div class="box5_b" style="width: 460px !important;"> <span style="font-size:22px; font-weight:bold; color:#ff6d00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价格:</span><br>
+            巨博网络永远将客户的利益放在首位，相对于不规范<br>
+            的SEO市场，我们"价格合理，效果保障"，并且我们郑<br>
+            重无效果全额退款。 </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/ajax/libs/blockUI/jquery.blockUI.js"></script>
+<script src="/ajax/libs/iCheck/icheck.min.js"></script>
+<script src="/ajax/libs/layer/layer.min.js"></script>
+<script src="/ajax/libs/layui/layui.js"></script>
+<script src="/ruoyi/js/common.js?v=4.3.1"></script>
+<script src="/ruoyi/js/ry-ui.js?v=4.3.1"></script>
+<script>
+    function buy() {
+        console.log($("#product_id").val());
+        $.ajax({
+            url:"/product/buy",
+            data:{
+                productId:$("#product_id").val()
+            },
+            success:function (data) {
+                $.modal.msg(data);
+                console.log(data);
+            }
+        })
+    }
+</script>
+</body>
+</html>

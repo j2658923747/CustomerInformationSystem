@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>购买产品</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <!-- bootstrap-table 表格插件样式 -->
+    <link href="/ajax/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=20200318" rel="stylesheet">
+    <link href="/ruoyi/css/ry-ui.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="http://www.juboinfo.com/theme/2016/static/css/index2.css">
+    <link rel="stylesheet" type="text/css" href="http://www.juboinfo.com/theme/2016/static/css/public.css">
+    <link rel="stylesheet" type="text/css" href="http://www.juboinfo.com/theme/2016/static/css/qwtg1.css">
+    <link rel="stylesheet" type="text/css" href="http://www.juboinfo.com/theme/2016/static/css/head.css">
+
+    <!--<script type="text/javascript" src="http://www.juboinfo.com/theme/2016/static/js/main.js"></script>-->
+
+</head>
+<body>
+<div class="col-md-12" style="top:10%">
+    <div class="form-group">
+        <label class="col-sm-1 control-label" style="top:10px;left:50px;">产品价格：</label>
+        <div class="col-sm-1">
+            <input type="text" name="totalMoney" value="880" class="form-control" readonly>
+            <input type="hidden" id="product_id" value="3">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12 col-sm-offset-1 m-t">
+            <button type="submit" class="btn btn-primary" onclick="buy()">购买</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="main" style="position: relative;top: -420px;width: 90%;margin: 0 auto;">
+
+    <div class="main_1" style="background: url(http://www.juboinfo.com/theme/2016/static/picture/hwx.png) left center no-repeat;z-index: 9">
+        <div class="box">
+            <div class="main1box">
+                <div class="main_1img f_left effect-pic mart100"> </div>
+                <div class="qwtg_hot effect-ill2"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="main_1" style="background: url(http://www.juboinfo.com/theme/2016/static/picture/hwx.png) left center no-repeat;">
+    <div class="box">
+        <div class="main1box">
+            <div class="qwtg_hot effect-ill2"></div>
+
+        </div>
+    </div>
+</div>
+
+    <div class="main_2" style="background: #f8f8f8">
+        <div class="box" style="width:1240px;">
+            <div class="title"> <strong>为什么要做全网营销？</strong>
+                <p style="color:#333;">成交前，80%的人会上网全面对比，全网没有知名度，是给对手送客户</p>
+            </div>
+            <div class="mtimgL tit1_1 f_left effect-pic"> <img src="http://www.juboinfo.com/theme/2016/static/picture/dbimgl.jpg">
+                <ul class="dbul">
+                    <li>您做了竞价推广，但客户习惯性上网对比<br>
+                        全网没有知名度，是给同行送客户</li>
+                    <li>您做了很多广告，但客户习惯性上网对比<br>
+                        全网没有知名度，是给同行送客户</li>
+                    <li>您电话开发客户，但客户习惯性上网对比<br>
+                        全网没有知名度，是给同行送客户</li>
+                    <li>您线下做了很多推广，但客户习惯性上网对比<br>
+                        全网没有知名度，是给同行送客户</li>
+                    <li><b>......</b></li>
+                </ul>
+            </div>
+            <div class="mtimgR tit1_2 f_right"> <img src="http://www.juboinfo.com/theme/2016/static/picture/dlimg4.png" style="display: block;"> </div>
+        </div>
+    </div>
+    <div class="zjbox">
+        <div class="box" style="background: #aa0708;">
+            <p style="margin-top:45px;">巨博的价值：<strong>解决“搜到你”和“相信你”的难题！</strong></p>
+        </div>
+    </div>
+    <div class="main_6">
+        <div class="box">
+            <div class="title"> <strong>巨博品牌全网推广是怎么做的？</strong>
+                <p style="color:#333;">8大服务，覆盖2大端（电脑、手机），只为实现一个目的：提升企业全网知名度</p>
+            </div>
+            <div class="wzg_tgl">
+                <p class="titp">全面覆盖<font>非单一，更多覆盖，避免死角</font></p>
+                <ul class="qwtg_ul">
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_05.jpg" alt="全网营销品牌推广">
+                        <p><span>让官网排名在首页</span></p>
+                    </li>
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_06.jpg" alt="全网营销品牌推广">
+                        <p><span>增加1000-4000个搜索曝光机会</span></p>
+                    </li>
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_03.jpg" alt="全网营销品牌推广">
+                        <p><span>搜索品牌词首页至少霸占3-6条</span></p>
+                    </li>
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_033.jpg" alt="全网营销品牌推广">
+                        <p><span>拥抱微信10亿用户入口</span></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="wzg_tgl">
+                <p class="titp">优势霸屏 <font>非广告，更多优势展示，提升品牌可信度</font></p>
+                <ul class="qwtg_ul">
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_01.jpg" alt="全网营销品牌推广">
+                        <p><span>让品牌可信度爆棚</span></p>
+                    </li>
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_02.jpg" alt="全网营销品牌推广">
+                        <p><span>让品牌口碑更具有影响力</span></p>
+                    </li>
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_07.jpg" alt="全网营销品牌推广">
+                        <p><span>让新媒体平台上也能搜到你</span></p>
+                    </li>
+                    <li><img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_04.jpg" alt="全网营销品牌推广">
+                        <p><span>让网站天生具备成交力</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="title">【<b>全面覆盖：</b>非单一，更多覆盖，避免死角】</div>
+    </div>
+    <div class="main_5">
+        <div class="box" style=" width:1280px;background: #cb1a1a;">
+            <div class="qwtg_gjc f_left tit1_1 effect-pic"> </div>
+            <div class="bant02_txt  f_right">
+                <p class="font60 mart80">官网排名优化</p>
+                <p class="tit_em"><em></em></p>
+                <p class="font18 mart30">官网排名优化（覆盖电脑端+手机端）</p>
+                <p class="font18 mart10">让企业官网在千亿网页中脱颖而出</p>
+                <p class="font18 mart10">实现搜索企业和产品显示在首页</p>
+                <p class="font18 mart10">3个月内至少保证3-6个关键词进入搜索引擎首页</p>
+            </div>
+        </div>
+    </div>
+    <div class="main_18">
+        <div class="box">
+            <div class="aitxt f_left" style=" margin-top:260px;">
+                <p class="font60">海王星</p>
+                <p class="tit_em"><em></em></p>
+                <p class="font18">让电脑+手机搜索曝光机会增加100-400倍</p>
+                <p class=" font18 mart10">此项基于云计算平台，通过大数据分析+AI人工智能</p>
+                <p class="font18 mart10">轻松实现关键词排名在首页，抢占首页仅有的10个位置</p>
+                <p class=" font18 mart10">30天内实现10000个以上关键词排名在首页</p>
+                <p class="mart30"> <a href="" target="_blank" class="corred qwtg_dj">此项可单独购买，点击查看更多</a></p>
+            </div>
+            <div class="aiimg qwtg_ss f_right effect-pic"></div>
+        </div>
+    </div>
+    <div class="main_7">
+        <div class="box">
+            <div class="f_left tit1_1 effect-pic" style="margin-top:120px;"> <img src="http://www.juboinfo.com/theme/2016/static/picture/wzg_ppbp.png" alt="精准词霸屏"> </div>
+            <div class="bant02_txt  f_right" style="text-align: left;margin-top:180px;  margin-left: 50px; width: 480px;">
+                <p class="font60 mart80">精准词霸屏</p>
+                <p class="tit_em"><em></em></p>
+                <p class="font18 mart30">精准营销，首页霸屏</p>
+                <p class="font18 mart10">通过营销型网站、媒体文章、口碑等方式</p>
+                <p class="font18 mart10">达到全方位霸屏，全面展示企业实力，进行客户精准引流</p>
+            </div>
+        </div>
+    </div>
+    <div class="wzg_xcx">
+
+    </div>
+    <div class="box">
+        <div class="title" style="font-size: 46px;">【<b>优势霸屏：</b>非广告，更多优势展示，提升品牌可信度】</div>
+    </div>
+    <div class="main_15" style="display: none;">
+        <div class="box">
+            <p class="font60 mart80">新闻媒体投稿</p>
+            <p class="tit_em"><em></em></p>
+            <p class="mart50 wid660">API直通2000多家媒体，权威媒体在线直发，企业优势新闻随时都可投稿，实时提升企业社会公信力及影响力</p>
+            <div class="mtimgbox">
+                <div class="mtimgL tit1_1 f_left effect-pic"> <img src="http://www.juboinfo.com/theme/2016/static/picture/mtimgl.png"> </div>
+                <div class="mtimgR tit1_2 f_right effect-ill2"> <img src="http://www.juboinfo.com/theme/2016/static/picture/mtimgr.png"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="main_3" style="display: none;">
+        <div class="box">
+            <p class="font60 mart80">口碑营销</p>
+            <p class="tit_em"><em></em></p>
+            <p class="mart50 wid660">线上口碑决定企业发展命脉；结合企业真实信息，联合企业客户</p>
+            <p class="mart50 wid660">每月持续打造线上良好口碑（百度知道、百度口碑、知乎）</p>
+            <div class="ban02_img f_left tit1_1 effect-pic"> </div>
+        </div>
+    </div>
+    <div class="main_15 main_19" style="border-bottom: 10px solid #f8f8f8;display: none;">
+        <div class="box">
+            <p class="font60 mart80">新媒体推广</p>
+            <p class="tit_em"><em></em></p>
+            <p class="mart50 wid660">今日头条、搜狐、一点资讯等多个新媒体平台全覆盖；在新媒体上搜索企业时能显示更多优势信息；使用新闻稿，每月持续发布，让推广不留死角</p>
+        </div>
+    </div>
+    <div>
+        <div class="main_10" style="display: none;">
+            <div class="box">
+                <div class="aitxt f_left">
+                    <p class="font60">重塑营销型网站</p>
+                    <p class="tit_em"><em></em></p>
+                    <p class="font18">让网站天生具备成交力，助力百度推广转化，否则白白烧钱</p>
+                    <p class=" font18 mart10">用营销思维+资深设计师在2个月内重新塑造企业线上门面</p>
+                    <p class="font18 mart10">包含PC网站、手机网站、微信网站，各种终端全覆盖</p>
+                    <p class=" font18 mart10">同时赠送1个顶级英文域名（.com/ .net / .cn）以及15G网站空间</p>
+                    <img src="http://www.juboinfo.com/theme/2016/static/picture/qwtg_lwz.jpg" alt="全网营销品牌推广" class="mart30"> </div>
+                <div class="aiimg f_right effect-ill2"></div>
+            </div>
+        </div>
+        <div class="main_10 wzg_dnsj" style="background: #fff;display: none;">
+            <div class="jkimg"></div>
+            <div class="jkbox">
+                <div class="box">
+                    <div class="jktxt f_left">
+                        <p class="font60" style="font-size:54px;">电脑、手机实时监控<br>
+                            让推广一目了然</p>
+                        <p class="tit_em"><em></em></p>
+                        <p class="font30" style="font-size:22px">99%的推广公司没有客户实时监控云平台，客户无法掌控推广进度，巨博提供电脑、手机实时监控云平台，随时随地让推广一目了然。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="qwtg_tc">
+
+        </div>
+        <div style="border-bottom: 10px solid #f8f8f8;">
+            <div class="box">
+                <p class="title" style="margin-bottom: 0px; font-size: 60px;">为什么要选择巨博</p>
+                <p style="font-size: 18px;margin-bottom: 50px;text-align: center;  font-size: 22px;">传统企业做全网推广6大难</p>
+                <ul class="qy_nt">
+                    <li class="l1"> <img src="http://www.juboinfo.com/theme/2016/static/picture/qy_nt1.png" alt="全网营销品牌推广">
+                        <div>
+                            <h5>传统企业对全网营销不懂不会</h5>
+                            <span>传统企业由于长期从事自己熟悉的行业，对发展迅速的互联网营销了解的不全面，不知道从哪下手，只能摸着石头过河，常常走弯路交学费。</span> </div>
+                    </li>
+                    <li class="l2"> <img src="http://www.juboinfo.com/theme/2016/static/picture/qy_nt2.png" alt="全网营销品牌推广">
+                        <div>
+                            <h5>互联网服务行业乱象严重</h5>
+                            <span>传统企业由于不懂网络知识，经常被许多网络公司的业务员误导，做了错误的决策、买了错误的产品、用了错误的推广方式。</span> </div>
+                    </li>
+                    <li class="l3"> <img src="http://www.juboinfo.com/theme/2016/static/picture/qy_nt3.png" alt="全网营销品牌推广">
+                        <div>
+                            <h5>上了各种课程很难落地</h5>
+                            <span>学习了很多网络推广课程，学的时候觉得很有道理，过几天就忘光了，隔行如隔山，传统企业很难将课程中的知识运用到自身的企业。</span> </div>
+                    </li>
+                    <li class="l4"> <img src="http://www.juboinfo.com/theme/2016/static/picture/qy_nt4.png" alt="全网营销品牌推广">
+                        <div>
+                            <h5>全网营销团队难招聘难管理</h5>
+                            <span>传统企业由于不懂互联网，无法辨别什么是真正的互联网人才，更无法管理和指导日常工作，经常出现请人难、用人难、留人更难的局面。</span> </div>
+                    </li>
+                    <li class="l5"> <img src="http://www.juboinfo.com/theme/2016/static/picture/qy_nt5.png" alt="全网营销品牌推广">
+                        <div>
+                            <h5>做了网络推广没有效果</h5>
+                            <span>全网营销是一个系统的工程，并且是串联关系，一个环节没有做好，所有环节都白做，许多企业做了推广花了很多钱，失败的原因甚至都没有找到。</span> </div>
+                    </li>
+                    <li class="l6"><img src="http://www.juboinfo.com/theme/2016/static/picture/qy_nt6.png" alt="全网营销品牌推广">
+                        <div>
+                            <h5>没有渠道无法PC移动全覆盖</h5>
+                            <span>企业是无法建立多平台推广渠道的，企业想实现全网推广，必须拥有全国媒体渠道、口碑平台、B2B信息平台、新媒体平台、搜索云排名平台等超过2000个平台和渠道，才能实现PC移动全覆盖。</span> </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sczc">
+            <div class="box">
+                <p class="font60 mart30">不同于单次整合营销推广公司</p>
+                <p class="mart30">很多整合营销公司，为了降低人工成本主推单次服务（30天执行完毕），因为服务一年人工成本非常高，没有利润。</p>
+                <p>线上品牌打造是一个长期持续过程，线下品牌的树立也不是一次性完成的，需要长期宣传和口碑的积累，</p>
+                <p>真正懂品牌的企业不会选择单次推广服务。</p>
+                <div class="qetg_xt" style="background: url(http://www.juboinfo.com/theme/2016/static/images/qetg_xt.jpg) no-repeat center -5px;"></div>
+            </div>
+        </div>
+        <div class="main_16">
+            <div class="box" style="width:1310px">
+                <p class="font60 mart80">不同于信息群发平台</p>
+                <p class="mart50 wid910">花费几千上万开个户，每天还需辛苦发广告，没有效果会说是你发的信息不够多、不够好。而且信息杂乱，有损品牌。<br>
+                    巨博只对效果负责，真正实现媒体新闻、搜索引擎、口碑、营销型网站、B2B平台等全渠道推广，<br>
+                    电脑手机全覆盖，推广只剩喝茶看报表。</p>
+                <div class="tgqd " style="background: url(http://www.juboinfo.com/theme/2016/static/images/qwtg_qd.jpg) no-repeat center -5px;"></div>
+            </div>
+        </div>
+        <div class="wzg_jjtg" style="display: none;">
+            <div class="box" style="width: 1220px;">
+                <div class="aitxt f_left">
+                    <p class="font60">做了竞价推广<br>
+                        还需要巨博吗？</p>
+                    <p class="font18 mart30">竞价推广只解决了搜到你，但落地网页决定转化率；</p>
+                    <p class=" font18 mart10">巨博全网推广中，重塑营销型网站就是解决转化问题，</p>
+                    <p class="font18 mart10">新闻、口碑是解决信任问题，否则竞价推广就是白白烧钱。</p>
+                    <p class=" font18 mart10">热词推荐使用竞价推广，一般词推荐SEO搜索排名优化，互相结合效果更佳。</p>
+                </div>
+                <div class="tit1_1 f_right"> <img src="http://www.juboinfo.com/theme/2016/static/picture/jjtg.png" style="margin-top: 110px;" alt="全网推广"> </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/ajax/libs/blockUI/jquery.blockUI.js"></script>
+<script src="/ajax/libs/iCheck/icheck.min.js"></script>
+<script src="/ajax/libs/layer/layer.min.js"></script>
+<script src="/ajax/libs/layui/layui.js"></script>
+<script src="/ruoyi/js/common.js?v=4.3.1"></script>
+<script src="/ruoyi/js/ry-ui.js?v=4.3.1"></script>
+<script>
+    function buy() {
+        console.log($("#product_id").val());
+        $.ajax({
+            url:"/product/buy",
+            data:{
+                productId:$("#product_id").val()
+            },
+            success:function (data) {
+                $.modal.msg(data);
+                console.log(data);
+            }
+        })
+    }
+</script>
+</body>
+</html>
